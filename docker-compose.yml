@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  greenkrill:
+    build: .
+    # container_name: greenkrill-bot
+    volumes:
+      - ./life:/workspace/life
+      - ./soul:/workspace/soul
+      - ./play:/workspace/play
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    network_mode: bridge
+
