@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   greenkrill:
-    image: ninjago77/greenkrill
+    image: ninjago77/greenkrill:latest
     volumes:
       # NOTE: Relative paths (./) require the same folder structure 
       # to exist on every node in the Swarm.
