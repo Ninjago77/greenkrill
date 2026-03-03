@@ -2,17 +2,24 @@ version: '3.8'
 
 services:
   greenkrill:
-    # build: .
     image: ninjago77/greenkrill
-    # container_name: greenkrill-bot
     volumes:
+      # NOTE: Relative paths (./) require the same folder structure 
+      # to exist on every node in the Swarm.
       - ./life:/workspace/life
       - ./soul:/workspace/soul
       - ./play:/workspace/play
     environment:
       - PYTHONUNBUFFERED=1
+    # 'stdin_open' and 'tty' are often ignored in Swarm; 
+    # check if your bot requires them for interaction.
     stdin_open: true
     tty: true
-    restart: unless-stopped
-    network_mode: bridge
-
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      # resources:
+        # limits:
+          # cpus: '0.50'
+          # memory: 512M
