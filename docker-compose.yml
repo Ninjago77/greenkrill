@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   greenkrill:
-    build: .
+    # build: .
+    image: ninjago77/greenkrill
     # container_name: greenkrill-bot
     volumes:
       - ./life:/workspace/life
